@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
+function Counter() {
 
-function App() {
-
+  return(
+    <h1> Lul works</h1>
+  )
 }
-
-export default App
+export default Counter;
