@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+console.log('starting');
 var app = require('../app');
 var debug = require('debug')('w2gklon-react:server');
 var http = require('http');
