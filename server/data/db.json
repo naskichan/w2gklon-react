@@ -1,0 +1,19 @@
+{
+    "playlists": [
+        {
+            "name": "First playlist yay",
+            "videos": [
+                "GrH3OrZU6Ek",
+                "PxtTn1RBos4"
+            ]
+        },
+        {
+            "name": "Second playlist yay",
+            "videos": [
+                "GrH3OrZU6Ek",
+                "PxtTn1RBos4"
+            ]
+        }
+    ]
+
+}
