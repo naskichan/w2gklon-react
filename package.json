@@ -13,6 +13,7 @@
     "socket.io": "^4.1.3",
     "web-vitals": "^1.0.1"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "start-client": "react-scripts start",
     "build": "react-scripts build",
@@ -38,4 +39,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
