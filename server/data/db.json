@@ -1,19 +1,31 @@
 {
     "playlists": [
         {
+            "uuid": "fpy",
             "name": "First playlist yay",
             "videos": [
-                "GrH3OrZU6Ek",
-                "PxtTn1RBos4"
+                {
+                    "id": "GrH3OrZU6Ek",
+                    "title": "[MMD] Cynical Night Plan YYB式初音ミク[PV][60 Fps][request]",
+                    "channelTitle": "PizaCG"
+                }
             ]
         },
         {
+            "uuid": "spy",
             "name": "Second playlist yay",
             "videos": [
-                "GrH3OrZU6Ek",
-                "PxtTn1RBos4"
+                {
+                    "id": "VZRbUrYUqzE",
+                    "title": "[MMD]アンノウン・マザーグース Unknown Mother-Goose Sour式初音ミク[PV]",
+                    "channelTitle": "PizaCG"
+                },
+                {
+                    "id": "VZRbUrYUqzE",
+                    "title": "[MMD]アンノウン・マザーグース Unknown Mother-Goose Sour式初音ミク[PV]",
+                    "channelTitle": "PizaCG"
+                }
             ]
         }
     ]
-
 }

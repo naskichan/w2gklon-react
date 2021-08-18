@@ -2,10 +2,12 @@ const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
 const cors = require('cors')
+const axios = require('axios')
 const isDev = process.env.NODE_ENV === "development"
 console.log(isDev)
 const io = require('socket.io')(server)
-let db = require('./data/db.json')
+let db = require('./data/db')
+let credentials = require('./data/credentials.json')
 
 const port = 3001
 
@@ -19,5 +21,28 @@ app.listen(port, function() {
 })
 
 app.get('/api/playlists', function(req, res) {
-    res.send(db.playlists)
+    res.send(db.getPlaylists())
+    
 })
+//Make proper validation pls!
+app.post('/api/playlistEntry', function(req, res) {
+    fetchVideoInfo(req.query.videoId).then((apires) => {
+        const item = apires.data.items[0]
+        const video = {
+            "id": item.id,
+            "title": item.snippet.title,
+            "channelTitle": item.snippet.channelTitle
+        }
+        console.log('video info is there', video)
+        const response = db.addVideoToPlaylist(req.query.playlist, video)
+        res.send(response)
+
+    })
+})
+
+async function fetchVideoInfo(videoId) {
+    const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${credentials.apikey}`
+    console.log(url)
+    return await axios(url)
+}
+
