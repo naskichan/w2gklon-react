@@ -1,6 +1,17 @@
 {
     "playlists": [
         {
+            "uuid": "default",
+            "name": "Default Playlist",
+            "videos": [
+                {
+                    "id": "GrH3OrZU6Ek",
+                    "title": "[MMD] Cynical Night Plan YYB式初音ミク[PV][60 Fps][request]",
+                    "channelTitle": "PizaCG"
+                }
+            ]
+        },
+        {
             "uuid": "fpy",
             "name": "First playlist yay",
             "videos": [
