@@ -1,49 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState, React } from 'react';
+import logo from './logo.svg'
+import './App.css'
+import { useState, React, useEffect } from 'react'
+import axios from 'axios'
+import styled from 'react-emotion'
 
 function App() {
 
 
   let [playlists,setPlayList] = useState([]);
   
-  const requestData = async () => {
-    console.log('Request received')
-    const response = await fetch('http://localhost:3001/api/playlists')
-    const body = await response.json();
-    
-    if (response.status !== 200) {
-      throw Error(body.message) 
+  useEffect( () => {
+    async function fetchData() {
+      console.log('fetching')
+      return await axios('http://localhost:3001/api/playlists')
+      
     }
-    
-    return body;
-  }
-  requestData().then(res => setPlayList(res))
+    fetchData().then((res) => {
+      console.log('recieved stuff', res.data)
+      setPlayList(res.data)
+    })
+  }, [URL]) 
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {playlists.map((playlist) => {
-          return (
-            <div>{playlist.name}</div>
-            )
-        })}
-        
-      </header>
-    </div>
+    <Header>
+      {playlists.map((playlist) => {
+        return (
+          <div>{playlist.name}</div>
+          )
+      })}
+    </Header>
   );
 }
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 
 export default App;
