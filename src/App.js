@@ -10,12 +10,12 @@ function App() {
   let [playlists,setPlayList] = useState([]);
   
   useEffect( () => {
-    async function fetchData() {
+    async function fetchPlaylists() {
       console.log('fetching')
       return await axios('http://localhost:3001/api/playlists')
       
     }
-    fetchData().then((res) => {
+    fetchPlaylists().then((res) => {
       console.log('recieved stuff', res.data)
       setPlayList(res.data)
     })
@@ -34,7 +34,7 @@ function App() {
 
 const Header = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `
 
 export default App;
