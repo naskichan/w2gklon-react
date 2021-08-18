@@ -2,7 +2,7 @@ import logo from './logo.svg'
 import './App.css'
 import { useState, React, useEffect } from 'react'
 import axios from 'axios'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 
 function App() {
 
