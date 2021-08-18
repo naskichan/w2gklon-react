@@ -1,6 +1,7 @@
 import { useState, React, useEffect } from 'react'
 import axios from 'axios'
 import styled from '@emotion/styled'
+import Playlist from './components/Playlist';
 
 
 function App() {
@@ -23,11 +24,7 @@ function App() {
 
   return (
     <Main>
-      {playlists.map((playlist) => {
-        return (
-          <div>{playlist.name}</div>
-          )
-      })}
+      <Playlist playlists={playlists}/>
     </Main>
   );
 }
