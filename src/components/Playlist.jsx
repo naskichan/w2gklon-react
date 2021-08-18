@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import PlaylistVideo from "./PlaylistVideo";
 
-
+//TODO: Component requests api everytime playlist is updated, consider this:
+// https://stackoverflow.com/questions/52929417/fetch-data-only-once-per-react-component/52931126
 function Playlist({playlists}) {
-    let selected = 'spy'
+    let [selected, setSelected] = useState('default');
 
     console.log('playlists', playlists)
     return(
-        <>    
+        <>   
+            <select onChange={(e) => {setSelected(e.target.value)}}>
+                {playlists.map((playlist) => {
+                    return(
+                        <option value={playlist.uuid}>{playlist.name}</option>
+                    )
+                })}
+            </select>
             {playlists.map((playlist) => {
-                
+
                 if(playlist.uuid === selected) {
                     return (
                         <PlaylistContent>
