@@ -10,6 +10,7 @@ let db = require('./data/db.json')
 const port = 3001
 
 if(isDev) {
+    console.log('im in dev mode so ill allow all cors requests')
     app.use(cors());
 }
 
@@ -18,5 +19,5 @@ app.listen(port, function() {
 })
 
 app.get('/api/playlists', function(req, res) {
-    res.status(200).send(db.playlists)
+    res.send(db.playlists)
 })
