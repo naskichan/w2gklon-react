@@ -4,9 +4,11 @@ import { useState, React } from 'react';
 
 function App() {
 
-  let [playlists] = useState(0);
+
+  let [playlists,setPlayList] = useState([]);
   
   const requestData = async () => {
+    console.log('Request received')
     const response = await fetch('http://localhost:3001/api/playlists')
     const body = await response.json();
     
@@ -16,7 +18,7 @@ function App() {
     
     return body;
   }
-  requestData().then(res => playlists = res.express)
+  requestData().then(res => setPlayList(res))
 
   return (
     <div className="App">
@@ -33,7 +35,11 @@ function App() {
         >
           Learn React
         </a>
-        {playlists}
+        {playlists.map((playlist) => {
+          return (
+            <div>{playlist.name}</div>
+            )
+        })}
         
       </header>
     </div>
