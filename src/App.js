@@ -22,17 +22,17 @@ function App() {
   }, [URL]) 
 
   return (
-    <Header>
+    <Main>
       {playlists.map((playlist) => {
         return (
           <div>{playlist.name}</div>
           )
       })}
-    </Header>
+    </Main>
   );
 }
 
-const Header = styled.div`
+const Main = styled.div`
   display: flex;
   flex-direction: column;
 `
