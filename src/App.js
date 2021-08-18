@@ -1,8 +1,7 @@
-import logo from './logo.svg'
-import './App.css'
 import { useState, React, useEffect } from 'react'
 import axios from 'axios'
 import styled from '@emotion/styled'
+
 
 function App() {
 
@@ -19,6 +18,7 @@ function App() {
       console.log('recieved stuff', res.data)
       setPlayList(res.data)
     })
+    // eslint-disable-next-line
   }, [URL]) 
 
   return (
