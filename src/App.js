@@ -7,7 +7,9 @@ import Player from './components/Player'
 
 function App() {
 
-
+  const video = {
+    id: 'DhOv8OoPBUI'
+  }
   let [playlists,setPlayLists] = useState([]);
   
   useEffect( () => {
@@ -27,7 +29,7 @@ function App() {
     <Main>
       <ContentWrapper>
       <Playlist playlists={playlists}/>
-        <Player />
+        <Player video={video}/>
       </ContentWrapper>
     </Main>
   );

@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
+import YouTube from "react-youtube";
 
-function Player() {
+function Player({video}) {
     return (
         <Wrapper>
-            <p>Player</p>
+            <YouTube videoId={video.id}></YouTube>
         </Wrapper>
     )
 }
