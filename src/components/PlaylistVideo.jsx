@@ -21,6 +21,7 @@ const Thumbnail = styled.img`
     width: 30%;
     object-fit: cover;
     display: block;
+    min-width: 2rem;
     `
 const Content = styled.div`
     display: flex;
