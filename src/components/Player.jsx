@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import styled from "@emotion/styled";
 import YouTube from "react-youtube";
-import VideoContext from '../contexts/VideoContext'
 
-function Player() {
+function Player({video}) {
 
-    const [currentVideo, setCurrentVideo] = useContext(VideoContext)
     // Saving in this file makes the player go undefined
     let player
 
@@ -26,9 +24,7 @@ function Player() {
     return (
         
         <Wrapper>
-            <VideoContext.Consumer>
-                <YouTube videoId={currentVideo.id} opts={playerOpts} onReady={(e) => player = e.target}></YouTube>
-            </VideoContext.Consumer>
+            <YouTube videoId={video.id} opts={playerOpts} onReady={(e) => player = e.target}></YouTube>
             <Button onClick={handleClick} />
         </Wrapper>
     )

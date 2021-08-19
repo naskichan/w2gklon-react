@@ -4,11 +4,10 @@ import VideoContext from "../contexts/VideoContext"
 
 function PlaylistVideo({video}) {
     
-    const [currentVideo, setCurrentVideo] = useContext(VideoContext)
     const thumbnailsrc = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`
 
     function handleClick() {
-        setCurrentVideo(video)
+        console.log('values simply cant be passed over to the parent sry')
     }
 
     return(

@@ -4,13 +4,14 @@ import styled from '@emotion/styled'
 import Playlist from './components/Playlist'
 import Player from './components/Player'
 import { io } from 'socket.io-client'
-import VideoContext from './contexts/VideoContext'
 
 
 function App() {
   
   const [playlists,setPlayLists] = useState([])
-
+  let currentVideo = {
+    id: "nMlwer-lbow"
+  }
   
   
   useEffect( () => {
@@ -29,10 +30,7 @@ function App() {
     <Main>
       <ContentWrapper>
           <Playlist playlists={playlists}/>
-          <VideoContext.Provider value={'debug'}>
-            <Player />
-          </VideoContext.Provider>
-
+          <Player video={currentVideo}/>
       </ContentWrapper>
     </Main>
   );
