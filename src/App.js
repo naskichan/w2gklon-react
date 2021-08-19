@@ -8,10 +8,11 @@ import { io } from 'socket.io-client'
 
 function App() {
   
-  const [playlists,setPlayLists] = useState([])
-  let currentVideo = {
-    id: "nMlwer-lbow"
-  }
+  const [ playlists, setPlayLists ] = useState([])
+  const [ currentVideo, setCurrentVideo] = useState(
+    {
+      id: "V1BoiJhJhaw"
+    })
   
   
   useEffect( () => {
@@ -29,7 +30,7 @@ function App() {
   return (
     <Main>
       <ContentWrapper>
-          <Playlist playlists={playlists}/>
+          <Playlist playlists={playlists} onCurrentVideoChange={data => setCurrentVideo(data)}/>
           <Player video={currentVideo}/>
       </ContentWrapper>
     </Main>

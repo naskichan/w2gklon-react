@@ -1,17 +1,14 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "@emotion/styled"
-import VideoContext from "../contexts/VideoContext"
 
-function PlaylistVideo({video}) {
+function PlaylistVideo({video, onCurrentVideoChange}) {
     
     const thumbnailsrc = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`
 
-    function handleClick() {
-        console.log('values simply cant be passed over to the parent sry')
-    }
+    
 
     return(
-        <Content onClick={handleClick}>
+        <Content onClick={() => onCurrentVideoChange(video)}>
             <Thumbnail src={thumbnailsrc} alt='Thumbnail of video'/>
             <InfoWrapper>
                 <Text>{video.title}</Text>

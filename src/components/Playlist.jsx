@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import PlaylistVideo from "./PlaylistVideo";
 import VideoContext from '../contexts/VideoContext'
@@ -6,10 +6,8 @@ import VideoContext from '../contexts/VideoContext'
 
 //TODO: Component requests api everytime playlist is updated, consider this:
 // https://stackoverflow.com/questions/52929417/fetch-data-only-once-per-react-component/52931126
-function Playlist({playlists}) {
+function Playlist({playlists, onCurrentVideoChange}) {
     let [selected, setSelected] = useState('default');
-
-    console.log('playlists', playlists)
     return(
         <PlaylistContent>   
             <Selector onChange={(e) => {setSelected(e.target.value)}}>
@@ -27,7 +25,7 @@ function Playlist({playlists}) {
                             {playlist.videos.map((video) => {
                                 return(
                                     <VideoContext.Provider>
-                                        <PlaylistVideo video={video} />
+                                        <PlaylistVideo video={video} onCurrentVideoChange={onCurrentVideoChange} />
                                     </VideoContext.Provider>
                                 )
                             })}
