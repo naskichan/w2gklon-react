@@ -24,12 +24,17 @@ const Thumbnail = styled.img`
     min-width: 2rem;
     `
 const Content = styled.div`
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     margin: 0.3rem;
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    :hover {
+        background-color: #e6e6e6;
+        transition: background-color .2s ease-in-out;
+    }
     
 `
 const InfoWrapper = styled.div`
