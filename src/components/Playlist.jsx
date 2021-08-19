@@ -9,44 +9,44 @@ function Playlist({playlists}) {
 
     console.log('playlists', playlists)
     return(
-        <>   
-            <select onChange={(e) => {setSelected(e.target.value)}}>
+        <PlaylistContent>   
+            <Selector onChange={(e) => {setSelected(e.target.value)}}>
                 {playlists.map((playlist) => {
                     return(
                         <option value={playlist.uuid}>{playlist.name}</option>
                     )
                 })}
-            </select>
+            </Selector>
             {playlists.map((playlist) => {
 
                 if(playlist.uuid === selected) {
                     return (
-                        <PlaylistContent>
-                            <Title>
-                                {playlist.name}
-                            </Title>
-                            <VideosWrapper>
-                                {playlist.videos.map((video) => {
-                                    return(
-                                    <div>
-                                        <PlaylistVideo video={video} />
-                                    </div>
-                                    )
-                                })}
-                            </VideosWrapper>
-                        </PlaylistContent>
+                        <VideosWrapper>
+                            {playlist.videos.map((video) => {
+                                return(
+                                    <PlaylistVideo video={video} />
+                                )
+                            })}
+                        </VideosWrapper>
                     )
                 }
                 return (<> </>)
             })}
-        </>
+        </PlaylistContent>
     )
 }
+const Selector = styled.select`
+    margin: 1rem;
+`
 const PlaylistContent = styled.div`
     display: flex;
     flex-direction: column;
+    border-radius: 1rem;
+    margin: 1rem;
+    height: 100%;
     -webkit-box-shadow: 8px 7px 23px 1px rgba(0,0,0,0.2); 
     box-shadow: 8px 7px 23px 1px rgba(0,0,0,0.2);
+    width: 20%;
 `
 const Title = styled.h2`
     font-size: 1rem;
@@ -54,6 +54,7 @@ const Title = styled.h2`
 const VideosWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    margin: 0.1rem;
 `
 
 export default Playlist
