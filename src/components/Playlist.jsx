@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "@emotion/styled";
 import PlaylistVideo from "./PlaylistVideo";
+import VideoContext from '../contexts/VideoContext'
+
 
 //TODO: Component requests api everytime playlist is updated, consider this:
 // https://stackoverflow.com/questions/52929417/fetch-data-only-once-per-react-component/52931126
@@ -24,7 +26,9 @@ function Playlist({playlists}) {
                         <VideosWrapper>
                             {playlist.videos.map((video) => {
                                 return(
-                                    <PlaylistVideo video={video} />
+                                    <VideoContext.Provider>
+                                        <PlaylistVideo video={video} />
+                                    </VideoContext.Provider>
                                 )
                             })}
                         </VideosWrapper>

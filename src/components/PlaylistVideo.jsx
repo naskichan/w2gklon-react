@@ -1,13 +1,18 @@
-import React from "react";
-import styled from "@emotion/styled";
-
+import React, { useContext } from "react"
+import styled from "@emotion/styled"
+import VideoContext from "../contexts/VideoContext"
 
 function PlaylistVideo({video}) {
+    
+    const [currentVideo, setCurrentVideo] = useContext(VideoContext)
     const thumbnailsrc = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`
-    console.log(thumbnailsrc)
+
+    function handleClick() {
+        setCurrentVideo(video)
+    }
 
     return(
-        <Content>
+        <Content onClick={handleClick}>
             <Thumbnail src={thumbnailsrc} alt='Thumbnail of video'/>
             <InfoWrapper>
                 <Text>{video.title}</Text>
