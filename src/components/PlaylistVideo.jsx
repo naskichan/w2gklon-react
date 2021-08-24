@@ -21,12 +21,11 @@ function PlaylistVideo({video}) {
     
 
     return(
-        <Content onClick={() => dispatchVideoChange(video)}>
+        <Content isSelected={isSelected} onClick={() => dispatchVideoChange(video)}>
             <Thumbnail src={thumbnailsrc} alt='Thumbnail of video'/>
             <InfoWrapper>
                 <Text>{video.title}</Text>
                 <Text>by {video.channelTitle}</Text>
-                {isSelected? (<h1>Lul</h1>) : (<h2>Lulw</h2>)}
             </InfoWrapper>
         </Content>
     )
@@ -50,6 +49,7 @@ const Content = styled.div`
         background-color: #e6e6e6;
         transition: background-color .2s ease-in-out;
     }
+    background-color: ${p => p.isSelected? '#e6e6e6': null};
     
 `
 const InfoWrapper = styled.div`
