@@ -5,7 +5,7 @@ import PlaylistVideo from "./PlaylistVideo";
 
 //TODO: Component requests api everytime playlist is updated, consider this:
 // https://stackoverflow.com/questions/52929417/fetch-data-only-once-per-react-component/52931126
-function Playlist({playlists, onCurrentVideoChange}) {
+function Playlist({playlists}) {
     let [selected, setSelected] = useState('default');
     return(
         <PlaylistContent>   
@@ -24,7 +24,7 @@ function Playlist({playlists, onCurrentVideoChange}) {
                             <VideosWrapper>
                                 {playlist.videos.map((video) => {
                                     return(
-                                        <PlaylistVideo video={video} onCurrentVideoChange={onCurrentVideoChange} />
+                                        <PlaylistVideo video={video} />
                                     )
                                 })}
                             </VideosWrapper>

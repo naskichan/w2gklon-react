@@ -1,14 +1,23 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { useStore } from 'react-redux'
 
-function PlaylistVideo({video, onCurrentVideoChange}) {
+
+function PlaylistVideo({video}) {
     
+    const store = useStore()
     const thumbnailsrc = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`
 
+    function dispatchVideoChange(video) {
+        store.dispatch({
+            type: 'SET_CURRENT_VIDEO',
+            video: video
+        })
+    }
     
 
     return(
-        <Content onClick={() => onCurrentVideoChange(video)}>
+        <Content onClick={() => dispatchVideoChange(video)}>
             <Thumbnail src={thumbnailsrc} alt='Thumbnail of video'/>
             <InfoWrapper>
                 <Text>{video.title}</Text>

@@ -1,18 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "@emotion/styled";
 import YouTube from "react-youtube";
+import { useStore} from 'react-redux'
 
-function Player({video}) {
+function Player() {
 
+    const store = useStore()
+    //initial state
+    let [video, setVideo] = useState(store.getState())
+
+    function changeVideo() {
+        setVideo(store.getState())
+    }
+
+    store.subscribe(changeVideo)
     // Saving in this file makes the player go undefined
     let player
 
     function playerStateChanged(e) {
         player = e.target;
-        console.log('playerstate', player.getPlayerState())
-
         if(player.getPlayerState() === 5) {
-            console.log('playing video')
             player.playVideo()
         }
 
@@ -54,7 +61,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 48rem;
-    height: 60rem;
+    width: 60rem;
 `
 const Title = styled.h1`
     font-size: 2rem;

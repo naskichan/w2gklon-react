@@ -1,20 +1,17 @@
-import { useState, React, useEffect, useContext } from 'react'
+import { useState, React, useEffect } from 'react'
 import axios from 'axios'
 import styled from '@emotion/styled'
 import Playlist from './components/Playlist'
 import Player from './components/Player'
 import { io } from 'socket.io-client'
+import { Provider } from 'react-redux'
+import { provideStore } from './redux/createReduxStore'
 
 
 function App() {
   
+  const store = provideStore()
   const [ playlists, setPlayLists ] = useState([])
-  const [ currentVideo, setCurrentVideo] = useState(
-    {
-      id: "V1BoiJhJhaw",
-      title: "🎵 Kawaii Future Bass & EDM Mix 🎵 Best Kawaii Music ʕ•ᴥ•ʔ",
-      channelTitle: "Electric Sounds"
-    })
   
   
   useEffect( () => {
@@ -32,8 +29,10 @@ function App() {
   return (
     <Main>
       <ContentWrapper>
-          <Playlist playlists={playlists} onCurrentVideoChange={data => setCurrentVideo(data)}/>
-          <Player video={currentVideo}/>
+        <Provider store={store}>
+            <Playlist playlists={playlists}/>
+            <Player/>
+        </Provider>
       </ContentWrapper>
     </Main>
   );
