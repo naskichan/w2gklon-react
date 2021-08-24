@@ -6,6 +6,7 @@ import Player from './components/Player'
 import { io } from 'socket.io-client'
 import { Provider } from 'react-redux'
 import { provideStore } from './redux/createReduxStore'
+import Chat from './components/Chat'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Provider store={store}>
             <Playlist playlists={playlists}/>
             <Player/>
+            <Chat />
         </Provider>
       </ContentWrapper>
     </Main>
@@ -45,7 +47,7 @@ const Main = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  flex-grow: 1 3;
+  height: 90vh;
 `
 
 export default App;
