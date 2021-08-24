@@ -1,14 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { useStore } from 'react-redux'
 
 
 function PlaylistVideo({video}) {
     
+    const [isSelected, setIsSelected] = useState(false)
     const store = useStore()
     const thumbnailsrc = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`
 
     function dispatchVideoChange(video) {
+        
+        console.log('i was clicked', video.title)
+        setIsSelected(true)
         store.dispatch({
             type: 'SET_CURRENT_VIDEO',
             video: video
@@ -22,6 +26,7 @@ function PlaylistVideo({video}) {
             <InfoWrapper>
                 <Text>{video.title}</Text>
                 <Text>by {video.channelTitle}</Text>
+                {isSelected? (<h1>Lul</h1>) : (<h2>Lulw</h2>)}
             </InfoWrapper>
         </Content>
     )
