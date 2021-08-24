@@ -48,6 +48,15 @@ app.post('/api/playlistEntry', function(req, res) {
 
     })
 })
+app.get('/api/getVideoInfo', function(req, res) {
+    fetchVideoInfo(req.query.videoId).then((apires) => {
+        res.send( {
+            "id": apires.data.items[0].id,
+            "title": apires.data.items[0].snippet.title,
+            "channelTitle": apires.data.items[0].snippet.channelTitle
+        })
+    })
+})
 
 async function fetchVideoInfo(videoId) {
     const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${credentials.apikey}`
