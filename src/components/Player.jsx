@@ -7,6 +7,17 @@ function Player({video}) {
     // Saving in this file makes the player go undefined
     let player
 
+    function playerStateChanged(e) {
+        player = e.target;
+        console.log('playerstate', player.getPlayerState())
+
+        if(player.getPlayerState() === 5) {
+            console.log('playing video')
+            player.playVideo()
+        }
+
+    }
+
     function handleClick() {
         if(player.getPlayerState() === 1) {
             player.pauseVideo()
@@ -25,7 +36,7 @@ function Player({video}) {
         
         <Wrapper>
             <Title>{video.title}</Title>
-            <CustomYouTube videoId={video.id} opts={playerOpts} onReady={(e) => player = e.target}></CustomYouTube>
+            <CustomYouTube videoId={video.id} opts={playerOpts} onStateChange={(e) => playerStateChanged(e)}></CustomYouTube>
             <Button onClick={handleClick}>Me is text</Button>
         </Wrapper>
     )
@@ -43,6 +54,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 48rem;
+    height: 60rem;
 `
 const Title = styled.h1`
     font-size: 2rem;
