@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import YouTube from "react-youtube";
 
@@ -24,19 +24,28 @@ function Player({video}) {
     return (
         
         <Wrapper>
-            <YouTube videoId={video.id} opts={playerOpts} onReady={(e) => player = e.target}></YouTube>
-            <Button onClick={handleClick} />
+            <Title>{video.title}</Title>
+            <CustomYouTube videoId={video.id} opts={playerOpts} onReady={(e) => player = e.target}></CustomYouTube>
+            <Button onClick={handleClick}>Me is text</Button>
         </Wrapper>
     )
 }
 
-const Button = styled.button`
+const CustomYouTube = styled(YouTube)`
+    width: 100%;
+    height: 32rem;
 
 `
-
+const Button = styled.button`
+    height: 2rem;
+`
 const Wrapper = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    height: 48rem;
+`
+const Title = styled.h1`
+    font-size: 2rem;
 `
 
 export default Player
