@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import PlaylistVideo from "./PlaylistVideo";
-import VideoContext from '../contexts/VideoContext'
 
 
 //TODO: Component requests api everytime playlist is updated, consider this:
@@ -21,15 +20,15 @@ function Playlist({playlists, onCurrentVideoChange}) {
 
                 if(playlist.uuid === selected) {
                     return (
-                        <VideosWrapper>
-                            {playlist.videos.map((video) => {
-                                return(
-                                    <VideoContext.Provider>
+                        <ScrollWrapper>
+                            <VideosWrapper>
+                                {playlist.videos.map((video) => {
+                                    return(
                                         <PlaylistVideo video={video} onCurrentVideoChange={onCurrentVideoChange} />
-                                    </VideoContext.Provider>
-                                )
-                            })}
-                        </VideosWrapper>
+                                    )
+                                })}
+                            </VideosWrapper>
+                        </ScrollWrapper>
                     )
                 }
                 return (<> </>)
@@ -44,15 +43,17 @@ const PlaylistContent = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
-    margin: 1rem;
+    margin: 5rem 1rem 1rem 1rem;
     height: 100%;
     -webkit-box-shadow: 8px 7px 23px 1px rgba(0,0,0,0.2); 
     box-shadow: 8px 7px 23px 1px rgba(0,0,0,0.2);
     width: 20%;
+    height: calc(1.5*360px);
 `
-const Title = styled.h2`
-    font-size: 1rem;
+const ScrollWrapper = styled.div`
+    overflow: scroll;
 `
+
 const VideosWrapper = styled.div`
     display: flex;
     flex-direction: column;

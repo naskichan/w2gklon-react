@@ -50,7 +50,7 @@ const Text = styled.p`
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 1vw;
 `
 
 export default PlaylistVideo
