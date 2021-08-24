@@ -11,7 +11,9 @@ function App() {
   const [ playlists, setPlayLists ] = useState([])
   const [ currentVideo, setCurrentVideo] = useState(
     {
-      id: "V1BoiJhJhaw"
+      id: "V1BoiJhJhaw",
+      title: "🎵 Kawaii Future Bass & EDM Mix 🎵 Best Kawaii Music ʕ•ᴥ•ʔ",
+      channelTitle: "Electric Sounds"
     })
   
   
