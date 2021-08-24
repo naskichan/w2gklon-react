@@ -48,7 +48,6 @@ const PlaylistContent = styled.div`
     -webkit-box-shadow: 8px 7px 23px 1px rgba(0,0,0,0.2); 
     box-shadow: 8px 7px 23px 1px rgba(0,0,0,0.2);
     width: 20%;
-    height: calc(1.5*360px);
 `
 const ScrollWrapper = styled.div`
     overflow: scroll;

@@ -61,7 +61,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 48rem;
-    width: 60rem;
+    flex-grow: 1;
 `
 const Title = styled.h1`
     font-size: 2rem;
